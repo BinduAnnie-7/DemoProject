@@ -18,14 +18,14 @@ public class CustomerController {
     @Autowired
     CustomerRepo customerRepo;
 
-    @RequestMapping(method = RequestMethod.POST, value = "/add")
-    public String addCustomer(@Valid @RequestBody Customer cust) {
-
-        customerRepo.save(cust);
+    @PostMapping("/add")
+    public String addCustomer(@Valid Customer customer, BindingResult result){
+        customerRepo.save(customer);
         return "redirect:/list";
     }
     @GetMapping("/add")
-    public String showForm(){
+    public String showForm(Model model){
+        model.addAttribute("customer", new Customer());
         return "add-customer";
     }
 
