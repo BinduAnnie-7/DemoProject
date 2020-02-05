@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>HOME</title>
+</head>
+<body>
+<a href="/add">ADD</a>
+
+<table  th:switch="${customers}">
+    <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+    </tr>
+    <tr th:each="customer:${customers}">
+        <td th:text="${customer.firstName}"></td>
+        <td th:text="${customer.lastName}"></td>
+    </tr>
+
+</table>
+</body>
+</html>
